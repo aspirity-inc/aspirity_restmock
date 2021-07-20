@@ -4,7 +4,7 @@ namespace $ {
 
 		@ $mol_mem
 		db() {
-			return new this.$.$lib_pg.Pool({
+			return new $node.pg.Pool({
 				connectionString: process.env.DATABASE_URL,
 				// ssl: { rejectUnauthorized: false },
 				ssl: false,
