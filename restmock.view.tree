@@ -1,0 +1,6 @@
+$aspirity_restmock $mol_list
+	domain $aspirity_restmock_domain
+	Request_link!id $mol_link
+		arg <= request_arg!id *
+		sub / <= request_title!id \
+	rows <= request_links /

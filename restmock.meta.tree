@@ -1,0 +1,2 @@
+deploy \/aspirity/restmock/dockerfile
+deploy \/aspirity/restmock/docker-compose.yml
