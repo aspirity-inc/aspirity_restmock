@@ -1,5 +1,5 @@
 namespace $ {
-	$.$aspirity_restmock_sync_bootstrap = ()=> {}
+	$.$aspirity_restmock_server_sync_bootstrap = ()=> {}
 	$mol_test({
 		'Completed'() {
 			$mol_ambient({}).$mol_log3_done({

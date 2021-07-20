@@ -1,6 +1,6 @@
 namespace $ {
 
-	export class $aspirity_restmock_sync_db extends $mol_object2 {
+	export class $aspirity_restmock_server_sync_db extends $mol_object2 {
 
 		@ $mol_mem
 		db() {

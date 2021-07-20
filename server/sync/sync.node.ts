@@ -3,11 +3,11 @@ namespace $ {
 	// TODO cannot import WebSocket Client type
 	type SocketClient = typeof $node.ws.Server.prototype.clients extends Set<infer Client> ? Client : never
 
-	export class $aspirity_restmock_sync extends $mol_server {
+	export class $aspirity_restmock_server_sync extends $mol_server {
 		
 		@ $mol_mem
 		db() {
-			return new $aspirity_restmock_sync_db
+			return new $aspirity_restmock_server_sync_db
 		}
 
 		@ $mol_mem
@@ -139,13 +139,13 @@ namespace $ {
 		
 	}
 	
-	export function $aspirity_restmock_sync_bootstrap(this: $) {
-		const server = new $aspirity_restmock_sync
+	export function $aspirity_restmock_server_sync_bootstrap(this: $) {
+		const server = new $aspirity_restmock_server_sync
 		server.db().connect()
 		server.db().init_table()
 		server.start()
 	}
 	
-	setTimeout( $mol_fiber_root( ()=> $mol_ambient({}).$aspirity_restmock_sync_bootstrap() as any ) )
+	setTimeout( $mol_fiber_root( ()=> $mol_ambient({}).$aspirity_restmock_server_sync_bootstrap() as any ) )
 
 }
