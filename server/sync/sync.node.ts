@@ -139,13 +139,15 @@ namespace $ {
 		
 	}
 	
-	export function $aspirity_restmock_server_sync_bootstrap(this: $) {
-		const server = new $aspirity_restmock_server_sync
-		server.db().connect()
-		server.db().init_table()
-		server.start()
+	export function $aspirity_restmock_server_sync_bootstrap() {
+		if ( $mol_state_arg.value( '--start' ) === '' ) {
+			const server = new $aspirity_restmock_server_sync
+			server.db().connect()
+			server.db().init_table()
+			server.start()
+		}
 	}
 	
-	setTimeout( $mol_fiber_root( ()=> $mol_ambient({}).$aspirity_restmock_server_sync_bootstrap() as any ) )
+	$mol_fiber_root( $aspirity_restmock_server_sync_bootstrap )()
 
 }

@@ -37,11 +37,11 @@ namespace $ {
 	}
 
 	export function $aspirity_restmock_server_bootstrap() {
-		if ( $mol_state_arg.value( 'start' ) ) {
+		if ( $mol_state_arg.value( '--start' ) === '' ) {
 			const server = new $aspirity_restmock_server
 			server.listen()
 		}
 	}
 	
-	setTimeout( $mol_fiber_root( $aspirity_restmock_server_bootstrap ) )
+	$mol_fiber_root( $aspirity_restmock_server_bootstrap )()
 }
