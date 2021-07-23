@@ -37,7 +37,6 @@ namespace $ {
 		}
 		
 		socket_connection( client: SocketClient) {
-			console.log('client connected')
 			client.on( 'message' , $mol_fiber_root( ( json: string ) => this.client_message( client , json ) ) )
 			client.on( 'close' , $mol_fiber_root( () => this.client_close( client ) ) )
 			client.on( 'error' , $mol_fiber_root( ( error: Error ) => this.client_error( client , error ) ) )
@@ -67,7 +66,6 @@ namespace $ {
 		
 		@ $mol_fiber.method
 		client_close( client: SocketClient ) {
-			console.log('client close')
 			const watch = this.watch()
 			watch.delete( client )
 		}
@@ -79,28 +77,21 @@ namespace $ {
 		
 		@ $mol_fiber.method
 		get( client: SocketClient , key: string ) {
-			console.log(`sync.get(${ key }):1`)
-			// if ( !this.watch().get( client ) ) this.watch().set( client , new Set )
-			// this.watch().get( client ).add( key )
 			const watch = this.watch()
 			if ( !watch.get( client ) ) watch.set( client , new Set )
 			watch.get( client ).add( key )
 			
 			const res = this.db().get( key )
-			console.log(`sync.get(${ key }):2` , res?.rows[0])
 			return res.rows[0] ? res.rows[0].value : null
 		}
 		
 		@ $mol_fiber.method
 		put( client: SocketClient , key: string, value: any ) {
-			console.log(`sync.put(${ key } , ${ value }):1`)
 			const prev = this.get( client , key ) ?? {}
-			console.log(`sync.put(${ key } , ${ value }):2`, 'prev=', prev)
 
 			const next_value = this.merge( prev , value )
 			
 			this.db().put( key , next_value )
-			console.log('sync.put3', key, value)
 			
 			for ( const [ watcher , keys ] of this.watch() ) {
 				if ( watcher === client ) continue

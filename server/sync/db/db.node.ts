@@ -13,11 +13,9 @@ namespace $ {
 		
 		@ $mol_fiber.method
 		query( query: string , params: string[] = [] ) {
-			// console.log(`db.query(${ query } , ${ params }):1`)
 			const db = this.db()
 			const func = $mol_fiber_sync( () => db.query( query , params ) )
 			const res = func()
-			// console.log(`db.query(${ query } , ${ params }):2`, res) // res = undefined
 			return res
 		}
 		
@@ -41,15 +39,12 @@ namespace $ {
 		
 		@ $mol_fiber.method
 		get( key: string ) {
-			// console.log( `db.get(${ key }):1` )
 			const res = this.query( `SELECT value FROM store WHERE key = $1::text` , [ key ] )
-			// console.log( `db.get(${ key }):2` , res )
 			return res
 		}
 		
 		@ $mol_fiber.method
 		put( key: string , value: any ) {
-			// console.log(`db.put(${ key } , ${ value }):1`)
 			const res = this.query(`
 				INSERT INTO store ( key, value )
 				VALUES( $1::text, $2::json )
@@ -58,7 +53,6 @@ namespace $ {
 				`,
 				[ key , value ]
 			)
-			// console.log(`db.put(${ key } , ${ value }):2`, res)
 			return res
 		}
 
