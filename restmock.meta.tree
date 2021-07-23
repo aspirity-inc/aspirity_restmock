@@ -1,2 +1,4 @@
 deploy \/aspirity/restmock/dockerfile
 deploy \/aspirity/restmock/docker-compose.yml
+include \/aspirity/restmock/server/sync
+include \/aspirity/restmock/server
