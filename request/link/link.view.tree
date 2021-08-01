@@ -1,0 +1,29 @@
+$aspirity_restmock_request_link $mol_link
+	request $aspirity_restmock_request
+	arg *
+		id <= id \
+	sub /
+		<= Title $mol_view sub / <= title \
+		<= Age $mol_view sub / <= age @ \ago
+	- translation and pluralization
+	units *
+		second <= second $aspirity_plural
+			other @ \seconds
+			one @ \second
+			few @ \
+			many @ \
+		minute <= minute $aspirity_plural
+			other @ \minutes
+			one @ \minute
+			few @ \
+			many @ \
+		hour <= hour $aspirity_plural
+			other @ \hour
+			one @ \hours
+			few @ \
+			many @ \
+		day <= day $aspirity_plural
+			other @ \days
+			one @ \day
+			few @ \
+			many @ \

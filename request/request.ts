@@ -43,7 +43,8 @@ namespace $ {
 		@ $mol_mem
 		moment( next?: $mol_time_moment ) {
 			const str = this.value( 'moment', next && next.toString() )
-			return str ? new $mol_time_moment( str ) : null
+			if ( !str ) throw new Error('Request moment is not defined')
+			return new $mol_time_moment( str )
 		}
 	}
 

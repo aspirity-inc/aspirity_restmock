@@ -1,0 +1,19 @@
+{
+	"$aspirity_restmock_request_link_age": "назад",
+	"$aspirity_restmock_request_link_day_few": "дня",
+	"$aspirity_restmock_request_link_day_many": "дней",
+	"$aspirity_restmock_request_link_day_one": "день",
+	"$aspirity_restmock_request_link_day_other": "дней",
+	"$aspirity_restmock_request_link_hour_few": "часа",
+	"$aspirity_restmock_request_link_hour_many": "часов",
+	"$aspirity_restmock_request_link_hour_one": "час",
+	"$aspirity_restmock_request_link_hour_other": "часов",
+	"$aspirity_restmock_request_link_minute_few": "минуты",
+	"$aspirity_restmock_request_link_minute_many": "минут",
+	"$aspirity_restmock_request_link_minute_one": "минута",
+	"$aspirity_restmock_request_link_minute_other": "минут",
+	"$aspirity_restmock_request_link_second_few": "секунды",
+	"$aspirity_restmock_request_link_second_many": "секунд",
+	"$aspirity_restmock_request_link_second_one": "секунда",
+	"$aspirity_restmock_request_link_second_other": "секунд"
+}

@@ -1,6 +1,5 @@
 $aspirity_restmock $mol_list
 	domain $aspirity_restmock_domain
-	Request_link!id $mol_link
-		arg <= request_arg!id *
-		sub / <= request_title!id \
+	Request_link!id $aspirity_restmock_request_link
+		request <= request!id $aspirity_restmock_request
 	rows <= request_links /
