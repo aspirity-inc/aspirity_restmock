@@ -32,7 +32,7 @@ namespace $.$$ {
 			const ms = $mol_state_time.now( 1000 ) - moment.valueOf()
 			const age = new $mol_time_duration( ms )
 			
-			const format = { second: 'PT1s', minute: 'PT1m', hour: 'PT1h', day: 'PT1d' }
+			const format = { second: 'PT1S', minute: 'PT1M', hour: 'PT1H', day: 'P1DT' }
 			const unit = this.unit( ms )
 			const value = Math.round( age.count( format[ unit ] ) )
 			
