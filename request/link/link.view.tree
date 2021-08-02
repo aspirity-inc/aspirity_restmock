@@ -10,22 +10,22 @@ $aspirity_restmock_request_link $mol_link
 		<= Age $mol_view sub / <= age @ \ago
 	- translation and pluralization
 	units *
-		second <= second $aspirity_plural
+		second <= second $aspirity_lib_plural
 			other @ \seconds
 			one @ \second
 			few @ \
 			many @ \
-		minute <= minute $aspirity_plural
+		minute <= minute $aspirity_lib_plural
 			other @ \minutes
 			one @ \minute
 			few @ \
 			many @ \
-		hour <= hour $aspirity_plural
+		hour <= hour $aspirity_lib_plural
 			other @ \hour
 			one @ \hours
 			few @ \
 			many @ \
-		day <= day $aspirity_plural
+		day <= day $aspirity_lib_plural
 			other @ \days
 			one @ \day
 			few @ \
