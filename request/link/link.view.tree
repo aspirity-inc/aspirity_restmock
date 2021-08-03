@@ -19,8 +19,8 @@ $aspirity_restmock_request_link $mol_link
 			few @ \
 			many @ \
 		hour <= hour $aspirity_lib_plural
-			other @ \hour
-			one @ \hours
+			other @ \hous
+			one @ \hour
 			few @ \
 			many @ \
 		day <= day $aspirity_lib_plural
