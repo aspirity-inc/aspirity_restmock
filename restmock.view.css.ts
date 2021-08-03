@@ -18,6 +18,7 @@ namespace $.$$ {
 			flex: {
 				grow: 1000,
 				basis: rem(42),
+				shrink: 0,
 			},
 
 		},
