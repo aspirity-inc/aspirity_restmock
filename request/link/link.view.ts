@@ -11,12 +11,8 @@ namespace $.$$ {
 			return this.request().id()
 		}
 		
-		method() {
-			return this.request().method().toUpperCase()
-		}
-		
-		pathname() {
-			return new URL( 'https://restmock.aspirity.com' + this.request().url() ).pathname
+		title() {
+			return this.request().title()
 		}
 		
 		unit( ms : number ) {

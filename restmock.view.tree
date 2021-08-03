@@ -1,5 +1,15 @@
-$aspirity_restmock $mol_list
+$aspirity_restmock $mol_book2
 	domain $aspirity_restmock_domain
-	Request_link!id $aspirity_restmock_request_link
-		request <= request!id $aspirity_restmock_request
-	rows <= request_links /
+	request!id $aspirity_restmock_request
+	request_ids /string
+	-
+	pages /
+		<= List_page $mol_page
+			title \Restmock
+			body / <= List $aspirity_restmock_request_list
+				request_ids <= request_ids
+				request?id <=> request?id
+		<= Details_page $mol_page
+			title <= request_title \
+			body / <= Details $aspirity_restmock_request_details
+				request <= request_current $aspirity_restmock_request

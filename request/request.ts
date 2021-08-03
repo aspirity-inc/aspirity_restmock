@@ -46,6 +46,13 @@ namespace $ {
 			if ( !str ) throw new Error('Request moment is not defined')
 			return new $mol_time_moment( str )
 		}
+		
+		@ $mol_mem
+		title() {
+			const method = this.method().toUpperCase()
+			const pathname = new URL( 'https://restmock.aspirity.com' + this.url() ).pathname
+			return `${ method } ${ pathname }`
+		}
 	}
 
 }

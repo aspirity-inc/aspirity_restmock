@@ -1,0 +1,8 @@
+$aspirity_restmock_request_list $mol_list
+	request_ids /string
+	request!id $aspirity_restmock_request
+	-
+	Link!id $aspirity_restmock_request_link
+		request <= request!id $aspirity_restmock_request
+	-
+	rows <= links /

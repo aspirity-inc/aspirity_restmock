@@ -4,9 +4,7 @@ $aspirity_restmock_request_link $mol_link
 		id <= id \
 	sub /
 		<= Title $mol_view sub /
-			<= method \
-			\ 
-			<= pathname \
+			<= title \
 		<= Age $mol_view sub / <= age @ \ago
 	- translation and pluralization
 	units *
