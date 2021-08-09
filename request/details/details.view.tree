@@ -1,12 +1,12 @@
 $aspirity_restmock_request_details $mol_deck
 	request $aspirity_restmock_request
 	items /
-		<= headers_item *
+		<= Headers $mol_view
 			title <= headers_title @ \Headers
-			Content <= Headers $mol_view sub / <= headers \Headers
-		<= query_item *
+			sub / <= headers \Headers
+		<= Query $mol_view
 			title <= query_title @ \Query
-			Content <= Query $mol_view sub / <= query \Query
-		<= body_item *
+			sub / <= query \Query
+		<= Body $mol_view
 			title <= body_title @ \Body
-			Content <= Body $mol_view sub / <= body \Body
+			sub / <= body \Body
