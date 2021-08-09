@@ -6,17 +6,20 @@
 
 ### How to start app server
 1. Run database
-
 ```bash
 cd ./mam/aspirity/restmock
-docker-compose up
+docker-compose up -d postgres pgadmin
 ```
-2. Run app server
 
+2. Run app server in docker
 ```bash
 cd ./mam/aspirity/restmock
-PORT="3000" DATABASE_URL="postgres://postgres:changeme@localhost:5432/app" node ./-/node.js --start
+docker-compose up restmock
 ```
+
+websocket is exposed on the port 3000
+
+http endpoint for sending requests is on the port 3001
 
 3. For debug app server use `nodemon`
 

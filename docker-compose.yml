@@ -1,9 +1,6 @@
-version: '3.5'
-
 services:
   postgres:
-    container_name: aspirity_restmock_db_container
-    image: postgres
+    image: postgres:13.3-alpine3.14
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
@@ -13,13 +10,10 @@ services:
       - postgres:/data/postgres
     ports:
       - "5432:5432"
-    networks:
-      - postgres
     restart: unless-stopped
-  
+
   pgadmin:
-    container_name: aspirity_restmock_pgadmin_container
-    image: dpage/pgadmin4
+    image: dpage/pgadmin4:5.5
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
@@ -29,12 +23,26 @@ services:
       - pgadmin:/root/.pgadmin
     ports:
       - "${PGADMIN_PORT:-5050}:80"
-    networks:
-      - postgres
     restart: unless-stopped
     logging:
       driver: none
-  
+
+  restmock:
+    image: node:14.17.4-buster-slim
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    init: true
+    working_dir: /mam/aspirity/restmock
+    volumes:
+      - ../../:/mam
+    depends_on:
+      - postgres
+    environment:
+      PORT: "3000"
+      ASPIRITY_RESTMOCK_SERVER_PORT: "3001"
+      DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-changeme}@postgres:5432/${POSTGRES_DB:-app}
+    command: node --enable-source-maps ./-/node.js --start
 #   sync:
 #     build: .
 #     container_name: sync_container
@@ -43,7 +51,7 @@ services:
 #       PORT: ${PORT:-3000}
 #       IP: 0.0.0.0
 #     ports:
-#       - 3000:3000 
+#       - 3000:3000
 #       - 5858:5858
 #     volumes:
 #       - ./node_modules:/usr/src/app
@@ -52,10 +60,6 @@ services:
 #     restart: unless-stopped
 #     command: yarn start
 
-networks:
-  postgres:
-    driver: bridge
-    
-volumes: 
-  pgadmin:
-  postgres:
+volumes:
+  pgadmin: {}
+  postgres: {}
